@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     objectFit: "cover",
     zIndex: 20,
+    height: 385
   },
 
   inputView: {

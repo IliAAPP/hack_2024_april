@@ -86,48 +86,35 @@ const place3 = {
 
 const Main = () => {
   const [searchQuery, setSearchQuery] = useState('');
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        
-        <Text style={styles.title}>Спланируйте идеальное путешествие</Text>
-      </View>
-      <View style={{ padding: 10 }}>
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Поиск мест"
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-        />
-      </View>
-      <View style={styles.allpics}>
-        <View style={styles.placeItem}>
-          <View style={styles.placeItembox}>
-            <Image source={place1.image} style={styles.placeImage} />
-            {/* <View style={styles.placeInfo}> */}
-            <Text style={styles.placeDescription}>{place1.description}</Text>
-            <Text style={styles.placeName}>{place1.name}</Text>
-            {/* </View> */}
+   
+      return (
+        <View style={styles.container}>
+          <View style={styles.header}>
+            <Text style={styles.title}>Спланируйте идеальное путешествие</Text>
           </View>
+          <View style={{ padding: 10 }}>
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Поиск мест"
+              value={searchQuery}
+              onChangeText={setSearchQuery}
+            />
+          </View>
+    
+          {/* Wrap the event list in a ScrollView */}
+          <ScrollView style={styles.allpics}>
+            {places.map((place) => (
+              <View key={place.id} style={styles.placeItem}>
+                <View style={styles.placeItembox}>
+                  <Image source={place.image} style={styles.placeImage} />
+                  <Text style={styles.placeDescription}>{place.description}</Text>
+                  <Text style={styles.placeName}>{place.name}</Text>
+                </View>
+              </View>
+            ))}
+          </ScrollView>
         </View>
-        <View style={styles.placeItem}>
-          <Image source={place2.image} style={styles.placeImage} />
-          {/* <View style={styles.placeInfo}> */}
-            <Text style={styles.placeDescription}>{place2.description}</Text>
-            <Text style={styles.placeName}>{place2.name}</Text>
-          {/* </View> */}
-        </View>
-        <View style={styles.placeItem}>
-          <Image source={place3.image} style={styles.placeImage} />
-          {/* <View style={styles.placeInfo}> */}
-            <Text style={styles.placeDescription}>{place3.description}</Text>
-            <Text style={styles.placeName}>{place3.name}</Text>
-          {/* </View> */}
-        </View>
-      </View>
-    </View>
-  );
-};
+      );
+    };
 
 export default Main;

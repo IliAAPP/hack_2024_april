@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Dimensions } from 'react-native';
-import MapView, { UrlTile, Marker, Polyline } from 'react-native-maps';
+import MapView, { UrlTile, Marker } from 'react-native-maps';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const urlTemplate = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -42,12 +42,6 @@ const NEW_GREEN_MARKERS = [
   },
 ];
 
-const ROUTE_COORDINATES = [
-  { latitude: 45.5402, longitude: 39.50 },
-  { latitude: 45.0356, longitude: 38.9755 },
-  { latitude: 45.433, longitude: 38.9750 },
-];
-
 const MapViewComponent = () => {
   return (
     <MapView initialRegion={REGION} style={styles.map}>
@@ -69,11 +63,6 @@ const MapViewComponent = () => {
           tracksViewChanges={false}
         />
       ))}
-      <Polyline
-        coordinates={ROUTE_COORDINATES}
-        strokeColor="#FF0000"
-        strokeWidth={2}
-      />
     </MapView>
   );
 };
